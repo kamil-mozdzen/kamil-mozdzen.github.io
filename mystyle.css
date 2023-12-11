@@ -1,0 +1,98 @@
+/* 
+   Styl dla elementów, które nie są obsługiwane przez X3DOM.
+   Elementy te są pozycjonowane absolutnie w odstępie 240 pikseli od góry
+   i 140 pikseli od lewej strony.
+*/
+.x3dom-nox3d {
+    position: absolute;
+    top: 240px;
+    left: 140px;
+}
+
+/* 
+   Styl dla obszaru Augmented Reality (Rozszerzonej Rzeczywistości).
+   Ustala kolor tła na wheat, szerokość i wysokość na 640x480 pikseli,
+   oraz dodaje obramowanie o grubości 1 piksela i czarnym kolorze.
+*/
+.ar {
+    background-color: wheat;
+    width: 640px;
+    height: 480px;
+    border: 1px solid #000;
+}
+
+/* 
+   Styl dla elementów o klasie "state".
+   Dodaje marginesy na górze i na dole.
+*/
+.state {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* 
+   Styl dla elementu o id "status".
+   Ustala rozmiar czcionki na bardzo dużą (x-large).
+*/
+#status {
+    font-size: x-large;
+}
+
+/* 
+   Styl dla elementu o id "btns".
+   Ustala rozmiar czcionki na dużą (large).
+*/
+#btns {
+    font-size: large;
+}
+
+/* 
+   Styl dla elementu o id "slider".
+   Dodaje margines na górze i ustala szerokość na 620 pikseli.
+*/
+#slider {
+    margin: 10px;
+    width: 620px;
+}
+
+/* 
+   Styl dla elementów o klasie "left".
+   Dodaje margines z lewej strony oraz ustawia indeks Z na 1.
+*/
+.left {
+    margin-left: 10px;
+    z-index: 1;
+}
+
+/* 
+   Styl dla elementu o id "trackerCanvas".
+   Jest to canvas pozycjonowany absolutnie, umieszczony 8 pikseli od góry
+   i 680 pikseli od lewej strony, z czerwonym obramowaniem o grubości 1 piksela.
+*/
+#trackerCanvas {
+    position: absolute;
+    top: 8px;
+    left: 680px;
+    border: 1px solid red;
+}
+
+/* 
+   Styl dla elementu o id "debugCanvas".
+   Jest to canvas pozycjonowany absolutnie, umieszczony 248 pikseli od góry
+   i 680 pikseli od lewej strony, z czerwonym obramowaniem o grubości 1 piksela.
+*/
+#debugCanvas {
+    position: absolute;
+    top: 248px;
+    left: 680px;
+    border: 1px solid red;
+}
+
+/* 
+   Styl dla elementu o id "container".
+   Jest to element pozycjonowany absolutnie, umieszczony 8 pikseli od góry.
+*/
+#container {
+    position: absolute;
+    top: 8px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Ustawia najnowszą wersję silnika dla Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Tytuł strony -->
+    <title>Augmented Reality with X3DOM and JSARToolKit</title>
+    
+    <!-- Importuje niezbędne biblioteki JavaScript -->
+    <script type='text/javascript' src='https://www.x3dom.org/download/x3dom.js'></script>
+    <script type="text/javascript" src="JSARToolKit.js"></script>
+    <!-- Importuje plik skryptu JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Importuje arkusze stylów CSS -->
+    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/x3dom.css'/>
+    <link rel="stylesheet" href="mystyle.css"/>
+</head>
+<body>
+    <!-- Obszar dla kanału AR -->
+    <div class="ar">
+        <canvas id="bgnd" width="640px" height="480px"></canvas>
+    </div>
+
+    <!-- Obszar dla sceny X3D -->
+    <div id='container'>
+        <!-- X3D Scene -->
+        <X3D id="x3d" showStat='true' showLog='false' width="640px" height="480px">
+            <Scene>
+                <!-- Widok frustum -->
+                <Viewfrustum id="vf"></Viewfrustum>
+
+                <!-- Macierz transformacji -->
+                <MatrixTransform id="root">
+                    <!-- 3D Obiekt (Ziemia) -->
+                    <Transform rotation="0 1 0 3.14159265359">
+                        <Transform id="planet" translation="0 0 0.2">
+                            <shape id="earth">
+                                <appearance>
+                                    <!-- Kolor materiału Ziemi -->
+                                    <material diffuseColor="0.5 1 0"></material>
+                                </appearance>
+                                <!-- Prostopadłościan reprezentujący Ziemię -->
+                                <box size="60 60 60"></box>
+                            </shape>
+                        </Transform>
+                    </Transform>
+                </MatrixTransform>
+            </Scene>
+        </X3D>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marker AR</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #x3d {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
