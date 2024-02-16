@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Augmented Reality with X3DOM and JSARToolKit</title>
+    <script type='text/javascript' src='https://www.x3dom.org/download/x3dom.js'></script>
+    <script type="text/javascript" src="JSARToolKit.js"></script>
+    <script src="script.js"></script>
+    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/x3dom.css'/>
+    <link rel="stylesheet" href="mystyle.css"/>
+</head>
+<body>
+    <div class="ar">
+        <canvas id="bgnd" width="640px" height="480px"></canvas>
+    </div>
+
+    <div id='container'>
+        <X3D id="x3d" showStat='true' showLog='false' width="640px" height="480px">
+            <Scene>
+                <Viewfrustum id="vf"></Viewfrustum>
+
+                <MatrixTransform id="root">
+                    <!-- Viewpoints -->
+                    <Viewpoint set_bind="true" fieldOfView="0.8" jump="false" orientation="0 1 0 0" position="-4 0.7 7" description="start"></Viewpoint>
+                    <Viewpoint set_bind="true" fieldOfView="0.8" jump="false" orientation="0 1 0 0" position="-2 0.7 2" description="srodek"></Viewpoint>
+                    <Viewpoint set_bind="true" fieldOfView="0.8" jump="false" orientation="0 1 0 0" position="4 0.7 -3" description="koniec"></Viewpoint>
+                    <Viewpoint set_bind="true" fieldOfView="0.8" jump="false" orientation="1 0 0 -1.57" position="0 20 0" description="top"></Viewpoint>
+                    
+                    <!-- Light -->
+                    <Transform>
+                        <SpotLight ambientIntensity="0" attenuation="1 0 0" beamWidth="1.570796" color="0 0 1" cutOffAngle="0.785398" direction="-1 0 0" intensity="1" location="-4 0.7 6" on="true" radius="50"></SpotLight>
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="1 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 150"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <!-- Przyciski -->
+                    <Transform rotation="0 1 0 1.57" translation="-71.25 7.5 0">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="71.25 7.5 0">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 71.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 -71.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <!-- Wspólne -->
+                    <Transform rotation="0 1 0 1.57" translation="-48.75 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="48.75 7.5 -11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="-26.25 7.5 -11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="26.25 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 -48.75">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 -26.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 -7.5">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 26.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 48.75">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                </MatrixTransform>
+            </Scene>
+        </X3D>
+    </div>
+</body>
+</html>
