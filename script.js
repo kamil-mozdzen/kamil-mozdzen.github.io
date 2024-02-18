@@ -24,6 +24,40 @@ var video = document.createElement('video'); //create a video element
 video.width = width;  //initialize video
 video.height = height;
 video.autoplay = true;
+video.playsInline = true;
+
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Navegadores modernos que no sean iOS Safari
+    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+      .then(handleStream)
+      .catch(handleError);
+  } else if (navigator.getUserMedia) {
+    // iOS Safari
+    navigator.getUserMedia({video: true, audio: false}, handleStream, handleError);
+  } else {
+    console.log("getUserMedia no es soportado en tu navegador");
+  }
+  
+  function handleStream(stream) {
+    // Aquí va tu código para manejar el flujo (stream)
+    console.log("STREAM")
+            console.log(stream)
+            video.crossOrigin = ""; //allow cross-domain communication
+
+            if ("srcObject" in video) {
+                video.srcObject = stream;
+              } else {
+                // Avoid using this in new browsers
+                video.src = window.URL.createObjectURL(stream);
+              }
+            //video.srcObject = stream; //create stream and use it as video source
+            videoStream = stream;  //save to variable
+  }
+  
+  function handleError(error) {
+    // Aquí va tu código para manejar errores
+  }
+/**
 
 // Normalize the various vendor prefixed versions of getUserMedia.
 navigator.getUserMedia = (navigator.getUserMedia ||navigator.webkitGetUserMedia ||
@@ -54,6 +88,7 @@ function startCam() {   //
         });
 }
 startCam(); //call startCam method
+*/
 var a = true;
 document.onload = function() //is executed when the page is fully loaded
 {
