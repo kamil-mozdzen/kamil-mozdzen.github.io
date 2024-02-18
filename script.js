@@ -47,7 +47,7 @@ function startCam() {   //
             videoStream = stream;  //save to variable
 
             // enable animation when tracking
-            document.getElementById("TS_planet").setAttribute("enabled", "true");
+           // document.getElementById("TS_planet").setAttribute("enabled", "true");
         },
         function(error) {
             alert("Could not access webcam."); //if webcam request failed print error
