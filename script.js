@@ -26,14 +26,21 @@ video.height = height;
 video.autoplay = true;
 video.playsInline = true;
 
+var constraints = null;
+
+if(checkDevice()){
+    constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
+} else {
+    constraints = { video: true, audio: false };
+}
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Navegadores modernos que no sean iOS Safari
-    navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    navigator.mediaDevices.getUserMedia({video: constraints, audio: false})
       .then(handleStream)
       .catch(handleError);
   } else if (navigator.getUserMedia) {
     // iOS Safari
-    navigator.getUserMedia({video: true, audio: false}, handleStream, handleError);
+    navigator.getUserMedia({video: constraints, audio: false}, handleStream, handleError);
   } else {
     console.log("getUserMedia no es soportado en tu navegador");
   }
@@ -57,6 +64,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   function handleError(error) {
     // Aquí va tu código para manejar errores
   }
+
 /**
 
 // Normalize the various vendor prefixed versions of getUserMedia.
