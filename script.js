@@ -66,42 +66,11 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Aquí va tu código para manejar errores
   }
 
+
+
 /**
-
-// Normalize the various vendor prefixed versions of getUserMedia.
-navigator.getUserMedia = (navigator.getUserMedia ||navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia ||navigator.msGetUserMedia);
-var getUserMedia = function(t, onsuccess, onerror) { //get the userMedia
-    if (navigator.getUserMedia) {
-        return navigator.getUserMedia(t, onsuccess, onerror);
-        } else {
-        onerror(new Error("No getUserMedia implementation found."));
-        return null;
-    }
-};
-
-function startCam() {   //
-    getUserMedia(
-        {video: true, audio: false},
-        function(stream) {
-            console.log(stream)
-            video.crossOrigin = ""; //allow cross-domain communication
-            video.srcObject = stream; //create stream and use it as video source
-            videoStream = stream;  //save to variable
-
-            // enable animation when tracking
-           // document.getElementById("TS_planet").setAttribute("enabled", "true");
-        },
-        function(error) {
-            alert("Could not access webcam."); //if webcam request failed print error
-        });
-}
-startCam(); //call startCam method
+This function check if the application running is a mobile device or not
 */
-
-console.log("MOBILE DEVICE");
-console.log(checkMobileDevice());
-
 function checkMobileDevice(){
     var a;
    console.log(window.navigator.userAgent);
@@ -119,12 +88,14 @@ function checkMobileDevice(){
      
     return a;
 }
+
+
 var a = true;
 document.onload = function() //is executed when the page is fully loaded
 {
     runtime = document.getElementById("x3d").runtime; //allows to manipulate the x3dom context during the runtime
 
-    root = document.getElementById("root"); //get the MatrixTransform node
+    //root = document.getElementById("root"); //get the MatrixTransform node
 
     runtime.exitFrame = function () {
         if (!initDone) {
@@ -146,6 +117,9 @@ document.onload = function() //is executed when the page is fully loaded
     };
 };
 
+/**
+This functions refresh the canvas
+*/
 function redraw()  //redraw
 {
     videoCanvas.getContext('2d').drawImage(video, 0, 0);
@@ -153,6 +127,8 @@ function redraw()  //redraw
     // Tell JSARToolKit that the canvas has changed.
     canvas.changed = true;
 }
+
+
 function animate()
 {
     // Draw the video frame to the canvas.
@@ -170,6 +146,42 @@ function animate()
     var markerCount = detector.detectMarkerLite(raster, threshold);
 
     for (var i=0; i<markerCount; i++) {
+
+        console.log("MARKER");
+        //Obtaining the marker number 
+        var numberMarker = detector.getIdMarkerData(i);
+        var nMarker = numberMarker._packet[1];
+        //console.log("NUMER MARKER");
+        //console.log(numberMarker._packet[1]);
+        
+        //Assigning the specific 3D Model to the marker
+        switch(nMarker) {
+            case 0:
+                root = document.getElementById("root0"); //get the MatrixTransform node
+              break;
+            case 1:
+                root = document.getElementById("root1"); //get the MatrixTransform node
+              break;
+            case 2:
+                root = document.getElementById("root2"); //get the MatrixTransform node
+              break;
+            case 3:
+                root = document.getElementById("root3"); //get the MatrixTransform node
+            break;
+            case 4:
+                root = document.getElementById("root4"); //get the MatrixTransform node
+              break;
+            case 5:
+                root = document.getElementById("root5"); //get the MatrixTransform node
+            case 64:
+                document.getElementById("switcherPlanets").setAttribute("whichChoice", 0);
+                root = document.getElementById("root"); //get the MatrixTransform node
+                    
+            break;            
+            default:
+              root = document.getElementById("root");
+          }
+
         // Get the marker matrix into the result matrix.
         detector.getTransformMatrix(i, resultMat);
         
@@ -181,6 +193,7 @@ function animate()
     }
 }
 
+//Adapt the marker based on the position when it moves
 function adaptMarkerMatrix(arMat)
 {
     var tmpMat = new x3dom.fields.SFMatrix4f(
