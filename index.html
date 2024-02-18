@@ -19,6 +19,7 @@
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
 
+                <Switch id="switcherPlanets" whichChoice="-1" >
                 <MatrixTransform id="root">
                   
                     <Transform DEF="Slonce" translation="0 0 0">
@@ -149,6 +150,7 @@
                     <ROUTE fromNode="TimeNeptune" fromField="fraction_changed" toNode="ObrotNeptune" toField="set_fraction"></ROUTE>
                     <ROUTE fromNode="ObrotNeptune" fromField="value_changed" toNode="Neptun" toField="rotation"></ROUTE>
                 </MatrixTransform>
+            </Switch>
             </Scene>
         </X3D>
     </div>
