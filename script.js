@@ -28,7 +28,7 @@ video.playsInline = true;
 
 var constraints = null;
 
-alert(checkDevice());
+
 if(checkDevice()){
     constraints = { video: { facingMode: { ideal: "environment" } }, audio: false };
 } else {
