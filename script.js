@@ -30,7 +30,7 @@ var constraints = null;
 
 alert(checkDevice());
 if(checkDevice()){
-    constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
+    constraints = { video: { facingMode: { ideal: "environment" } }, audio: false };
 } else {
     constraints = { video: true, audio: false };
 }
