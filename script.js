@@ -29,8 +29,8 @@ video.playsInline = true;
 var constraints = null;
 
 
-if(checkDevice()){
-    constraints = { video: { facingMode: { ideal: "environment" } }, audio: false };
+if(checkMobileDevice()){
+    constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
 } else {
     constraints = { video: true, audio: false };
 }
@@ -100,9 +100,9 @@ startCam(); //call startCam method
 */
 
 console.log("MOBILE DEVICE");
-console.log(checkDevice());
+console.log(checkMobileDevice());
 
-function checkDevice(){
+function checkMobileDevice(){
     var a;
    console.log(window.navigator.userAgent);
        if (navigator.userAgent.match(/Android/i)
