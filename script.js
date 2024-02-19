@@ -1,41 +1,59 @@
+/**
+This JavaScript code is for running an Augmented Reality application. It uses the JSARToolKit library to detect markers in a video stream and then manipulates a 3D scene in X3DOM based on the positions of these markers. It includes functions for initializing the video stream, setting up the marker detector, handling the video stream, error handling, checking if the application is running on a mobile device, animating the scene, adapting the marker matrix, initializing the tracker, and showing the marker.
+*/
 
+// Set DEBUG to true for debugging
 DEBUG = true;
 
+// Variables for runtime object manipulation and root reference
 var runtime = null; //holds the object that we need to manipulate the scene during the runtime
 var root = null; //reference to our matrixTransform obj
 
+// Variables for tracking status and initialization
 var initDone = false; //false as long we haven't used the initialized the tracker
 var doTracking = true; //to track or not to track
 
-var width = 320; //width of our canvas/video
-var height = 240; //height of those
-var canvas = null;   //global canvas obj that we need for render purposes
-var videoCanvas = null; //same
+// Canvas/video size
+var width = 320; 
+var height = 240; 
 
-var detector = null;    //marker detector obj
-var raster = null;      //raster obj
+// Canvas and video canvas objects
+var canvas = null;   
+var videoCanvas = null; 
 
-var resultMat = null;    //the matrix we get from the JSARToolkit and pass to our x3dom scene
-var threshold = 100;    //threshold of the light
+// Marker detection and raster objects
+var detector = null;    
+var raster = null;     
 
-var videoStream = null;  // holds the stream
-var video = document.createElement('video'); //create a video element
+// Matrix from JSARToolkit and light threshold
+var resultMat = null;    
+var threshold = 100;    
 
-video.width = width;  //initialize video
+// Variable for video stream
+var videoStream = null;  
+
+// Create a video element
+var video = document.createElement('video'); 
+
+// Initialize video properties
+video.width = width; 
 video.height = height;
 video.autoplay = true;
 video.playsInline = true;
 
+// Define video constraints
 var constraints = null;
 
-
+// Check if it's a mobile device and set constraints accordingly
 if(checkMobileDevice()){
     constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
 } else {
     constraints = { video: true, audio: false };
 }
+
+// Check if getUserMedia is supported and handle the stream
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Navegadores modernos que no sean iOS Safari
+     // Modern non-iOS Safari browsers
     navigator.mediaDevices.getUserMedia({video: constraints, audio: false})
       .then(handleStream)
       .catch(handleError);
@@ -45,11 +63,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   } else {
     console.log("getUserMedia no es soportado en tu navegador");
   }
-  
+
+// Function to handle the stream
   function handleStream(stream) {
-    // Aquí va tu código para manejar el flujo (stream)
-    console.log("STREAM")
-            console.log(stream)
+      
             video.crossOrigin = ""; //allow cross-domain communication
 
             if ("srcObject" in video) {
@@ -58,19 +75,16 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 // Avoid using this in new browsers
                 video.src = window.URL.createObjectURL(stream);
               }
-            //video.srcObject = stream; //create stream and use it as video source
-            videoStream = stream;  //save to variable
+            videoStream = stream;  
   }
   
   function handleError(error) {
-    // Aquí va tu código para manejar errores
+
   }
 
 
 
-/**
-This function check if the application running is a mobile device or not
-*/
+// Function to check if the application is running on a mobile device
 function checkMobileDevice(){
     var a;
    console.log(window.navigator.userAgent);
@@ -91,7 +105,8 @@ function checkMobileDevice(){
 
 
 var a = true;
-document.onload = function() //is executed when the page is fully loaded
+// The document's onload function executed when the page is fully loaded
+document.onload = function() 
 {
     runtime = document.getElementById("x3d").runtime; //allows to manipulate the x3dom context during the runtime
 
@@ -117,9 +132,7 @@ document.onload = function() //is executed when the page is fully loaded
     };
 };
 
-/**
-This functions refresh the canvas
-*/
+// Function to redraw the canvas
 function redraw()  //redraw
 {
     videoCanvas.getContext('2d').drawImage(video, 0, 0);
@@ -128,7 +141,7 @@ function redraw()  //redraw
     canvas.changed = true;
 }
 
-
+// Function to animate responsible for drawing the video frame to the canvas, detecting markers in the video frame, and updating the position and orientation of the 3D models based on the detected markers.
 function animate()
 {
     // Draw the video frame to the canvas.
@@ -142,19 +155,19 @@ function animate()
         }
         else { throw e; }
     }
-    // Detect the markers in the video frame.
+    // Use the detector object to find markers in the raster object (the canvas), using the given threshold.
     var markerCount = detector.detectMarkerLite(raster, threshold);
 
+    // For each detected marker...
     for (var i=0; i<markerCount; i++) {
 
         console.log("MARKER");
+        
         //Obtaining the marker number 
         var numberMarker = detector.getIdMarkerData(i);
         var nMarker = numberMarker._packet[1];
-        //console.log("NUMER MARKER");
-        //console.log(numberMarker._packet[1]);
         
-        //Assigning the specific 3D Model to the marker
+        // Depending on the ID of the marker, get the corresponding 3D model.
         switch(nMarker) {
             case 0:
                 root = document.getElementById("root0"); //get the MatrixTransform node
@@ -193,7 +206,7 @@ function animate()
     }
 }
 
-//Adapt the marker based on the position when it moves
+// Function to adapt the marker matrix
 function adaptMarkerMatrix(arMat)
 {
     var tmpMat = new x3dom.fields.SFMatrix4f(
@@ -221,6 +234,7 @@ function adaptMarkerMatrix(arMat)
     return tmpMat;
 }
 
+// Function to initialize the tracker
 function initializeTracker()
 {
     // Setting up JSARToolKit
@@ -283,6 +297,7 @@ function initializeTracker()
     redraw();
 }
 
+// Function to show the marker
 function showMarker()
 {
     var win = window.open('./marker.png','Marker','width=420,height=420');
