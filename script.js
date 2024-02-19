@@ -170,13 +170,14 @@ function animate()
 
     //If there are no markers all the 3D models will be hided
     if(!markerCount){
+        document.getElementById("switcher").setAttribute("whichChoice", -1);
         document.getElementById("switcher0").setAttribute("whichChoice", -1);
         document.getElementById("switcher1").setAttribute("whichChoice", -1);
         document.getElementById("switcher2").setAttribute("whichChoice", -1);
         document.getElementById("switcher3").setAttribute("whichChoice", -1);
         document.getElementById("switcher4").setAttribute("whichChoice", -1);
         document.getElementById("switcher5").setAttribute("whichChoice", -1);
-        document.getElementById("switcherPlanets").setAttribute("whichChoice", -1);
+        document.getElementById("switcher6").setAttribute("whichChoice", -1);
     }
 
     // For each detected marker...
