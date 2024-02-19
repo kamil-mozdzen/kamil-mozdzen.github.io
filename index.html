@@ -19,7 +19,20 @@
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
 
-                <Switch id="switcher0" whichChoice="-1" >
+                <Switch id="switcher" whichChoice="-1" >
+                    <MatrixTransform id="root">
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="0.5 1 0"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
+                </MatrixTransform>
+                </Switch> 
                 <MatrixTransform id="root0">
                     <Transform rotation="0 1 0 3.14159265359">
                             <transform id="planet" translation="0 0 0.2">
@@ -34,8 +47,8 @@
                 </MatrixTransform>
                 </Switch> 
 
-                <Switch id="switcher1" whichChoice="-1" >
-                <MatrixTransform id="root1">
+                <Switch id="switcher6" whichChoice="-1" >
+                <MatrixTransform id="root6">
                     <Transform rotation="0 1 0 3.14159265359">
                             <transform id="planet" translation="0 0 0.2">
                                 <shape id="earth">
@@ -109,8 +122,8 @@
                 </MatrixTransform>
                 </Switch> 
                 
-                <Switch id="switcherPlanets" whichChoice="-1" >
-                <MatrixTransform id="root">
+                <Switch id="switcher1" whichChoice="-1" >
+                <MatrixTransform id="root1">
                   
                     <Transform DEF="Slonce" translation="0 0 0">
                         <Shape>
