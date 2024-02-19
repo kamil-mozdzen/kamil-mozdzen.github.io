@@ -166,6 +166,7 @@ function animate()
     }
     // Use the detector object to find markers in the raster object (the canvas), using the given threshold.
     var markerCount = detector.detectMarkerLite(raster, threshold);
+    var nMarkerArray = []; // Array to store nMarker values
 
     //If there are no markers all the 3D models will be hided
     if(!markerCount){
