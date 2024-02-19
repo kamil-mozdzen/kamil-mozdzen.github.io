@@ -209,9 +209,9 @@ function animate()
               break;
             case 5:
                 root = document.getElementById("root5"); //get the MatrixTransform node
+            break;
             case 6:
                 root = document.getElementById("root6"); //get the MatrixTransform node
-                    
             break;            
             default:
               root = document.getElementById("root");
@@ -226,6 +226,7 @@ function animate()
         // Copy the marker matrix over to your marker root object.
         root.setAttribute("matrix", tmpMat.toGL().toString());
 
+        if(nMarkerArray.length > 0) {
         //Iterate over the nMarkerArray
         for(var i = 0; i < totalNumberModels; i++){
           
@@ -236,6 +237,7 @@ function animate()
             console.log('Number ' + i + ' found in array at position: ' + currentNMarker);
         } else {
             document.getElementById("switcher"+i+"").setAttribute("whichChoice", -1);
+        }
         }
         }
         
