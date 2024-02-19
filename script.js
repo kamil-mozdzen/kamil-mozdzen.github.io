@@ -165,6 +165,17 @@ function animate()
     // Use the detector object to find markers in the raster object (the canvas), using the given threshold.
     var markerCount = detector.detectMarkerLite(raster, threshold);
 
+    //If there are no markers all the 3D models will be hided
+    if(!markerCount){
+        document.getElementById("switcher0").setAttribute("whichChoice", -1);
+        document.getElementById("switcher1").setAttribute("whichChoice", -1);
+        document.getElementById("switcher2").setAttribute("whichChoice", -1);
+        document.getElementById("switcher3").setAttribute("whichChoice", -1);
+        document.getElementById("switcher4").setAttribute("whichChoice", -1);
+        document.getElementById("switcher5").setAttribute("whichChoice", -1);
+        document.getElementById("switcherPlanets").setAttribute("whichChoice", -1);
+    }
+
     // For each detected marker...
     for (var i=0; i<markerCount; i++) {
 
@@ -178,21 +189,27 @@ function animate()
         switch(nMarker) {
             case 0:
                 root = document.getElementById("root0"); //get the MatrixTransform node
+                document.getElementById("switcher0").setAttribute("whichChoice", 0);
               break;
             case 1:
                 root = document.getElementById("root1"); //get the MatrixTransform node
+                document.getElementById("switcher1").setAttribute("whichChoice", 0);
               break;
             case 2:
                 root = document.getElementById("root2"); //get the MatrixTransform node
+                document.getElementById("switcher2").setAttribute("whichChoice", 0);
               break;
             case 3:
                 root = document.getElementById("root3"); //get the MatrixTransform node
+                document.getElementById("switcher3").setAttribute("whichChoice", 0);
             break;
             case 4:
                 root = document.getElementById("root4"); //get the MatrixTransform node
+                document.getElementById("switcher4").setAttribute("whichChoice", 0);
               break;
             case 5:
                 root = document.getElementById("root5"); //get the MatrixTransform node
+                document.getElementById("switcher5").setAttribute("whichChoice", 0);
             case 64:
                 document.getElementById("switcherPlanets").setAttribute("whichChoice", 0);
                 root = document.getElementById("root"); //get the MatrixTransform node
