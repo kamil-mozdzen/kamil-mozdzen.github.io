@@ -226,6 +226,10 @@ function animate()
         // Copy the marker matrix over to your marker root object.
         root.setAttribute("matrix", tmpMat.toGL().toString());
 
+
+        
+    }
+
         if(nMarkerArray.length > 0) {
         //Iterate over the nMarkerArray
         for(var i = 0; i < totalNumberModels; i++){
@@ -240,8 +244,6 @@ function animate()
         }
         }
         }
-        
-    }
 }
 
 // Function to adapt the marker matrix
