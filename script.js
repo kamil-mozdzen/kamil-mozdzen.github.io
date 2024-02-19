@@ -51,6 +51,8 @@ video.playsInline = true;
 // Define video constraints
 var constraints = null;
 
+var totalNumberModels = 7;
+
 // Check if it's a mobile device and set constraints accordingly
 if(checkMobileDevice()){
     constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
@@ -184,35 +186,29 @@ function animate()
         //Obtaining the marker number 
         var numberMarker = detector.getIdMarkerData(i);
         var nMarker = numberMarker._packet[1];
+        nMarkerArray.push(nMarker); // Store nMarker in the array
         
         // Depending on the ID of the marker, get the corresponding 3D model.
         switch(nMarker) {
             case 0:
                 root = document.getElementById("root0"); //get the MatrixTransform node
-                document.getElementById("switcher0").setAttribute("whichChoice", 0);
               break;
             case 1:
                 root = document.getElementById("root1"); //get the MatrixTransform node
-                document.getElementById("switcher1").setAttribute("whichChoice", 0);
               break;
             case 2:
                 root = document.getElementById("root2"); //get the MatrixTransform node
-                document.getElementById("switcher2").setAttribute("whichChoice", 0);
               break;
             case 3:
                 root = document.getElementById("root3"); //get the MatrixTransform node
-                document.getElementById("switcher3").setAttribute("whichChoice", 0);
             break;
             case 4:
                 root = document.getElementById("root4"); //get the MatrixTransform node
-                document.getElementById("switcher4").setAttribute("whichChoice", 0);
               break;
             case 5:
                 root = document.getElementById("root5"); //get the MatrixTransform node
-                document.getElementById("switcher5").setAttribute("whichChoice", 0);
-            case 64:
-                document.getElementById("switcherPlanets").setAttribute("whichChoice", 0);
-                root = document.getElementById("root"); //get the MatrixTransform node
+            case 6:
+                root = document.getElementById("root6"); //get the MatrixTransform node
                     
             break;            
             default:
@@ -227,6 +223,20 @@ function animate()
         console.error(tmpMat);
         // Copy the marker matrix over to your marker root object.
         root.setAttribute("matrix", tmpMat.toGL().toString());
+
+        //Iterate over the nMarkerArray
+        for(var i = 0; i < totalNumberModels; i++){
+          
+          if(nMarkerArray.includes(i)) {
+            var currentNMarker = nMarkerArray[i];
+            // Execute your code here
+            document.getElementById("switcher"+i+"").setAttribute("whichChoice", 0);
+            console.log('Number ' + i + ' found in array at position: ' + currentNMarker);
+        } else {
+            document.getElementById("switcher"+i+"").setAttribute("whichChoice", -1);
+        }
+        }
+        
     }
 }
 
