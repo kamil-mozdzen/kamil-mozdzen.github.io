@@ -1,5 +1,12 @@
 /**
-This JavaScript code is for running an Augmented Reality application. It uses the JSARToolKit library to detect markers in a video stream and then manipulates a 3D scene in X3DOM based on the positions of these markers. It includes functions for initializing the video stream, setting up the marker detector, handling the video stream, error handling, checking if the application is running on a mobile device, animating the scene, adapting the marker matrix, initializing the tracker, and showing the marker.
+* This JavaScript code is for running an Augmented Reality application where displaying different X#D models. 
+*
+* It uses the JSARToolKit library to detect markers in a video stream and then manipulates 
+* a 3D scene in X3DOM based on the positions of these markers. It includes functions for initializing 
+* the video stream, setting up the marker detector, handling the video stream, error handling, 
+* checking if the application is running on a mobile device, animating the scene, adapting the marker matrix,
+* initializing the tracker, and showing the marker.
+*
 */
 
 // Set DEBUG to true for debugging
