@@ -7,8 +7,8 @@
 
 .ar {
     background-color: wheat;
-    width: 640px;
-    height: 480px;
+    width: 1040px;
+    height: 880px;
     border: 1px solid #000;
 }
 
@@ -37,6 +37,7 @@
 
 #trackerCanvas {
     position: absolute;
+    visibility: hidden;
     top: 8px;
     left: 680px;
     border: 1px solid red;
