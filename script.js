@@ -1,5 +1,5 @@
 // Set DEBUG to true for debugging
-DEBUG = true;
+DEBUG = false;
 
 // Variables for runtime object manipulation and root reference
 var runtime = null; //holds the object that we need to manipulate the scene during the runtime
@@ -133,7 +133,7 @@ document.onload = function()
 // Function to redraw the canvas
 function redraw()  //redraw
 {
-    videoCanvas.getContext('2d').drawImage(video, 0, 0);
+    videoCanvas.getContext('2d').drawImage(video, 0, 0, 1040, 880);
     canvas.getContext('2d').drawImage(videoCanvas, 0, 0, width, height);
     // Tell JSARToolKit that the canvas has changed.
     canvas.changed = true;
