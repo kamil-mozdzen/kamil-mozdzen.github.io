@@ -111,16 +111,31 @@
                 
                 <Switch id="switcher5" whichChoice="-1" >    
                 <MatrixTransform id="root5">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="0 0 0.5"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
+                    <pointLight location="150 0 0" color="1 0 0"></pointLight>
+                        <transform DEF="Szescian">
+                            <shape>
+                                <appearance>
+                                    <material emissiveColor="1 0.9 0.2" transparency="0.1" specularColor="0 1 0"></material>
+                                </appearance>
+                                <box size="60 60 60"></box> <!-- Rozmiar zwiększony o 30 razy -->
+                            </shape>
+                        </transform>
+                        <transform DEF="Kula" translation="150 0 0">
+                            <shape>
+                                <appearance>
+                                    <material emissiveColor="0 0.6 0.62" transparency="0.1" specularColor="0 1 0"></material>
+                                </appearance>
+                                <sphere radius="30"></sphere> <!-- Promień zwiększony o 30 razy -->
+                            </shape>
+                        </transform>
+                        <timeSensor DEF="time" cycleInterval="4" loop="true"></timeSensor>
+                        <positionInterpolator keyValue="150 0 0 0 150 0 -150 0 0  0 -150 0 150 0 0" key="0 0.25 0.5 0.75 1" DEF="Inter"></positionInterpolator>
+                        <orientationInterpolator key="0 0.25 0.5 0.75 1" keyValue="0 1 0 0 0 1 0 1.57 0 1 0 3.14 0 1 0 4.71 0 1 0 6.28" DEF="Obrot"></orientationInterpolator>
+                        <ROUTE fromNode="time" fromField="fraction_changed" toNode="Inter" toField="set_fraction"></ROUTE>
+                        <ROUTE fromNode="Inter" fromField="value_changed" toNode="Kula" toField="set_translation"></ROUTE>
+                        <ROUTE fromNode="time" fromField="fraction_changed" toNode="Obrot" toField="set_fraction"></ROUTE>
+                        <ROUTE fromNode="Obrot" fromField="value_changed" toNode="Szescian" toField="rotation"></ROUTE>
+
                 </MatrixTransform>
                 </Switch> 
                 
