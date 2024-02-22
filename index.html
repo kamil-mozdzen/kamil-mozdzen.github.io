@@ -18,17 +18,7 @@
         <X3D id="x3d" showStat='false' showLog='false' width="1000px" height="1000px">
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
-<!-- IDK CO TO  -->
-                <Switch id="switcher" whichChoice="-1" >
-                    <MatrixTransform id="root">
-                      <shape>
-  
-                         <appearance></appearance>
-                         <box size="80 80 80"></box>
-                         
-                    </shape>
-                </MatrixTransform>
-                </Switch> 
+
 <!-- shape-poprawione -->
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
@@ -71,11 +61,21 @@
                 <MatrixTransform id="root6">
 
 
-
+<SpotLight ambientIntensity='0' attenuation='1 0 0' beamWidth='1.570796' color='1 0 0' cutOffAngle='0.785398' direction='-1 0 0' intensity='1' location='10 0 0' on='TRUE' radius='100'></SpotLight>
+            
+                    <transform rotation='1 0 0 0.5' translation='0 0 -5'>
+                        <shape>
+                            <appearance>
+                                <material emissiveColor='0 1 0' transparency='0' specularColor='0 0.25 0.5'></material>
+                            </appearance>
+                            <box size='80 80 80'></box>
+                        </shape>
+                    </transform>
                     
                 </MatrixTransform>
                 </Switch> 
-<!-- Directional light -->
+                
+<!-- dodatkowy przyklad -->
 
 
             
@@ -114,7 +114,7 @@
 
                 </MatrixTransform>
                 </Switch> 
-<!-- direct llight  -->
+<!-- DIRECT llight  -->
                 <Switch id="switcher4" whichChoice="-1" >
                 <MatrixTransform id="root4">
                     <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
@@ -130,17 +130,18 @@
                     
                 </MatrixTransform>
                 </Switch> 
-<!--  -->
+<!-- POINT KTOREGO NIE MA  -->
                 <Switch id="switcher5" whichChoice="-1" >    
                 <MatrixTransform id="root5">
 
 
-                    
+                     
                
 
                 </MatrixTransform>
                 </Switch> 
-<!-- viepoint ale narazie nie wiem jak toprzedstawić -->
+                
+<!-- TRANSFORM -->
                 
                 <Switch id="switcher1" whichChoice="-1" >
                 <MatrixTransform id="root1">
