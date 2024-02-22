@@ -65,7 +65,7 @@
 
                 </MatrixTransform>
                 </Switch> 
-<!-- Addictional  -->
+
                 
                     <Switch id="switcher6" whichChoice="-1" >
                 <MatrixTransform id="root6">
@@ -76,39 +76,11 @@
                 </MatrixTransform>
                 </Switch> 
 <!-- Directional light -->
+
+
+            
                 <Switch id="switcher3" whichChoice="-1" >
                 <MatrixTransform id="root3">
-                    <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
-                    <transform>
-                       
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
-                            </appearance>
-                            <box size='100 100 100'></box>
-                        </shape>
-                    </transform>
-
-                </MatrixTransform>
-                </Switch> 
-<!-- point light tego kodu nie mam  -->
-                <Switch id="switcher4" whichChoice="-1" >
-                <MatrixTransform id="root4">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="0.5 0.5 0.5"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
-                </MatrixTransform>
-                </Switch> 
-<!-- zmienione na dodatkowy przyklad  -->
-                <Switch id="switcher5" whichChoice="-1" >    
-                <MatrixTransform id="root5">
 
 
                     <transform translation='-220 0 0'>
@@ -137,6 +109,32 @@
                             <sphere radius='60'></sphere>
                         </shape>
                     </transform>
+                    
+                    
+
+                </MatrixTransform>
+                </Switch> 
+<!-- direct llight  -->
+                <Switch id="switcher4" whichChoice="-1" >
+                <MatrixTransform id="root4">
+                    <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
+                    <transform>
+                       
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
+                            </appearance>
+                            <box size='100 100 100'></box>
+                        </shape>
+                    </transform>
+                    
+                </MatrixTransform>
+                </Switch> 
+<!--  -->
+                <Switch id="switcher5" whichChoice="-1" >    
+                <MatrixTransform id="root5">
+
+
                     
                
 
