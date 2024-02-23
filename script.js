@@ -133,7 +133,7 @@ document.onload = function()
 // Function to redraw the canvas
 function redraw()  //redraw
 {
-    videoCanvas.getContext('2d').drawImage(video, 0, 0, 1280, 2100);
+    videoCanvas.getContext('2d').drawImage(video, 0, 0, 1280, 1800);
     canvas.getContext('2d').drawImage(videoCanvas, 0, 0, width, height);
     // Tell JSARToolKit that the canvas has changed.
     canvas.changed = true;
