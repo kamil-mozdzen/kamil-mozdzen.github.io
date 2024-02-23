@@ -45,7 +45,7 @@
 
 #debugCanvas {
     position: absolute;
-    top: 248px;
+    top: 600px;
     left: 800px;
     border: 1px solid red;
 }
