@@ -39,14 +39,14 @@
     position: absolute;
     visibility: hidden;
     top: 8px;
-    left: 500px;
+    left: 680px;
     border: 1px solid red;
 }
 
 #debugCanvas {
     position: absolute;
     top: 248px;
-    left: 1000px;
+    left: 680px;
     border: 1px solid red;
 }
 
