@@ -41,7 +41,7 @@ video.playsInline = true;
 var constraints = null;
 
 var totalNumberModels = 7;
-
+ let constraints;
 // Check if it's a mobile device and set constraints accordingly
 if(checkMobileDevice()){
     constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
