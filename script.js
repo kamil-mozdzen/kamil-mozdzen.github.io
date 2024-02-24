@@ -1,104 +1,110 @@
-(function () {
-    if (
-      !"mediaDevices" in navigator ||
-      !"getUserMedia" in navigator.mediaDevices
-    ) {
-      alert("Camera API is not available in your browser");
-      return;
-    }
+// Set DEBUG to true for debugging
+DEBUG = false;
 
-    var totalNumberModels = 7;
+// Variables for runtime object manipulation and root reference
+var runtime = null; //holds the object that we need to manipulate the scene during the runtime
+var root = null; //reference to our matrixTransform obj
 
+// Variables for tracking status and initialization
+var initDone = false; //false as long we haven't used the initialized the tracker
+var doTracking = true; //to track or not to track
+
+// Canvas/video size
+var width = 320; 
+var height = 240; 
+
+// Canvas and video canvas objects
+var canvas = null;   
+var videoCanvas = null; 
+
+// Marker detection and raster objects
+var detector = null;    
+var raster = null;     
+
+// Matrix from JSARToolkit and light threshold
+var resultMat = null;    
+var threshold = 100;    
+
+// Variable for video stream
+var videoStream = null;  
+
+// Create a video element
+var video = document.createElement('video'); 
+
+// Initialize video properties
+video.width = width; 
+video.height = height;
+video.autoplay = true;
+video.playsInline = true;
+
+// Define video constraints
+var constraints = null;
+
+var totalNumberModels = 7;
+ 
+// Check if it's a mobile device and set constraints accordingly
+if(checkMobileDevice()){
+    constraints = { video: { facingMode: { exact: "environment" } }, audio: false };
+} else {
+    constraints = { video: true, audio: false };
+}
+
+// Check if getUserMedia is supported and handle the stream
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+     // Modern non-iOS Safari browsers
+    navigator.mediaDevices.getUserMedia({video: constraints, audio: false})
+      .then(handleStream)
+      .catch(handleError);
+  } else if (navigator.getUserMedia) {
+    // iOS Safari
+    navigator.getUserMedia({video: constraints, audio: false}, handleStream, handleError);
+  } else {
+    console.log("getUserMedia is not supported in your browser");
+  }
+
+// Function to handle the stream
+  function handleStream(stream) {
+      
+            video.crossOrigin = ""; //allow cross-domain communication
+
+            if ("srcObject" in video) {
+                video.srcObject = stream;
+              } else {
+                // Avoid using this in new browsers
+                video.src = window.URL.createObjectURL(stream);
+              }
+            videoStream = stream;  
+  }
   
-    // get page elements
-    const video = document.querySelector("#video");
-    const btnPlay = document.querySelector("#btnPlay");
-    const btnPause = document.querySelector("#btnPause");
-    const btnScreenshot = document.querySelector("#btnScreenshot");
-    const btnChangeCamera = document.querySelector("#btnChangeCamera");
-    const screenshotsContainer = document.querySelector("#screenshots");
-    const canvas = document.querySelector("#canvas");
-    const devicesSelect = document.querySelector("#devicesSelect");
-  
-    // video constraints
-    const constraints = {
-      video: {
-        width: {
-          min: 1280,
-          ideal: 1920,
-          max: 2560,
-        },
-        height: {
-          min: 720,
-          ideal: 1080,
-          max: 1440,
-        },
-      },
-    };
-  
-    // use front face camera
-    let useFrontCamera = true;
-  
-    // current video stream
-    let videoStream;
-  
-    // handle events
-    // play
-    btnPlay.addEventListener("click", function () {
-      video.play();
-      btnPlay.classList.add("is-hidden");
-      btnPause.classList.remove("is-hidden");
-    });
-  
-    // pause
-    btnPause.addEventListener("click", function () {
-      video.pause();
-      btnPause.classList.add("is-hidden");
-      btnPlay.classList.remove("is-hidden");
-    });
-  
-    // take screenshot
-    btnScreenshot.addEventListener("click", function () {
-      const img = document.createElement("img");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext("2d").drawImage(video, 0, 0);
-      img.src = canvas.toDataURL("image/png");
-      screenshotsContainer.prepend(img);
-    });
-  
-    // switch camera
-    btnChangeCamera.addEventListener("click", function () {
-      useFrontCamera = !useFrontCamera;
-  
-      initializeCamera();
-    });
-  
-    // stop video stream
-    function stopVideoStream() {
-      if (videoStream) {
-        videoStream.getTracks().forEach((track) => {
-          track.stop();
-        });
-      }
-    }
-  
-    // initialize
-    async function initializeCamera() {
-      stopVideoStream();
-      constraints.video.facingMode = useFrontCamera ? "user" : "environment";
-  
-      try {
-        videoStream = await navigator.mediaDevices.getUserMedia(constraints);
-        video.srcObject = videoStream;
-      } catch (err) {
-        alert("Could not access the camera");
-      }
-    }
-  
-    initializeCamera();
-  })();
-  document.onload = function() 
+  function handleError(error) {
+
+  }
+
+
+
+// Function to check if the application is running on a mobile device
+function checkMobileDevice(){
+    var a;
+   console.log(window.navigator.userAgent);
+       if (navigator.userAgent.match(/Android/i)
+       || navigator.userAgent.match(/webOS/i)
+       || navigator.userAgent.match(/iPhone/i)
+       || navigator.userAgent.match(/iPad/i)
+       || navigator.userAgent.match(/iPod/i)
+       || navigator.userAgent.match(/BlackBerry/i)
+       || navigator.userAgent.match(/Windows Phone/i)) {
+          a = true ;
+       } else {
+          a = false ;
+       } 
+     
+    return a;
+}
+
+
+var a = true;
+// The document's onload function executed when the page is fully loaded
+document.onload = function() 
 {
     runtime = document.getElementById("x3d").runtime; //allows to manipulate the x3dom context during the runtime
 
