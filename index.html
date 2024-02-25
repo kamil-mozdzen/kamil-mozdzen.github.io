@@ -53,16 +53,33 @@
 
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="0.5 1 0"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
+                    <<Group DEF="grupa">
+                        <Shape DEF="Kula">
+                            <Appearance>
+                                <Material DEF="trans">
+                                    <transparency>0.0</transparency>
+                                </Material>
+                            </Appearance>
+                            <Sphere radius="15"></Sphere>
+                        </Shape>
+                        <Transform translation="75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="-75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 -75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <TimeSensor DEF="czas" loop="true" cycleInterval="4"></TimeSensor>
+                        <ScalarInterpolator DEF="kolor" key="0 0.5 1" keyValue="0 1 0"></ScalarInterpolator>
+                    </Group>
+                    <ROUTE fromNode="czas" fromField="fraction_changed" toNode="kolor" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="kolor" fromField="value_changed" toNode="trans" toField="set_transparency"></ROUTE>
+               
                 </MatrixTransform>
                 </Switch> 
 
