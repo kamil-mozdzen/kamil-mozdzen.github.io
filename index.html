@@ -11,144 +11,118 @@
 </head>
 <body>
     <div class="ar">
-        <canvas id="bgnd" width="1300px" height="2000px"></canvas>
+        <canvas id="bgnd" width="1000px" height="1000px"></canvas>
     </div>
 
     <div id='container'>
-        <X3D id="x3d" showStat='false' showLog='false' width="1300px" height="2000px">
+        <X3D id="x3d" showStat='false' showLog='false' width="1000px" height="1000px">
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
-<!-- IDK CO TO  -->
+
                 <Switch id="switcher" whichChoice="-1" >
                     <MatrixTransform id="root">
-                      <shape>
-  
-                         <appearance></appearance>
-                         <box size="80 80 80"></box>
-                         
-                    </shape>
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="0.5 1 0"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
                 </MatrixTransform>
                 </Switch> 
-<!-- shape-poprawione -->
+
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
-<!--                      <shape>
-  
-                         <appearance></appearance>
-                         <box size="80 80 80"></box>
-                         
-                    </shape> -->
-                    
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="0.5 1 0"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
                 </MatrixTransform>
                 </Switch> 
-<!-- Appearance and Materail -->
+
+                <Switch id="switcher6" whichChoice="-1" >
+                <MatrixTransform id="root6">
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="1 1 1"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
+                </MatrixTransform>
+                </Switch> 
+
                 <Switch id="switcher2" whichChoice="-1" >
                 <MatrixTransform id="root2">
-
-                    <transform>
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
-                            </appearance>
-                            <box size='60 60 60'></box>
-                        </shape>
-                    </transform>
-
-                    <Transform translation='130 0 0'>
-                        <Shape>
-                            <Appearance>
-                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Hyams_Beach%2C_Jervis_Bay%2C_Australia.jpg/1920px-Hyams_Beach%2C_Jervis_Bay%2C_Australia.jpg"></ImageTexture>
-                            </Appearance>
-                            <box size='60 60 60'></box>
-                        </Shape>
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="1 1 0"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
                     </Transform>
-
                 </MatrixTransform>
                 </Switch> 
 
-                
-                    <Switch id="switcher6" whichChoice="-1" >
-                <MatrixTransform id="root6">
-
-
-
-                    
-                </MatrixTransform>
-                </Switch> 
-<!-- przyklad 3 kule -->
-
-
-            
                 <Switch id="switcher3" whichChoice="-1" >
                 <MatrixTransform id="root3">
-
-
-                    <transform translation='-220 0 0'>
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='0 0 1' transparency='0.1'  shininess='1'></material>
-                            </appearance>
-                            <sphere radius='60'></sphere>
-                        </shape>
-                    </transform>
-
-                    <transform translation='0 0 0'>
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='0 0 1' transparency='0.6'  shininess='1'></material>
-                            </appearance>
-                            <sphere radius='60'></sphere>
-                        </shape>
-                    </transform>
-
-                    <transform translation='220 0 0'>
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='0 0 1' transparency='0.9'  shininess='1'></material>
-                            </appearance>
-                            <sphere radius='60'></sphere>
-                        </shape>
-                    </transform>
-                    
-                    
-
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="1 0 0"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
                 </MatrixTransform>
                 </Switch> 
-<!-- direct llight  -->
+
                 <Switch id="switcher4" whichChoice="-1" >
                 <MatrixTransform id="root4">
-                    <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
-                    <transform>
-                       
-                        <shape>
-                            <appearance>
-                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
-                            </appearance>
-                            <box size='100 100 100'></box>
-                        </shape>
-                    </transform>
-                    
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="0.5 0.5 0.5"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
                 </MatrixTransform>
                 </Switch> 
-<!--  pusty marker w teroii ten przy poinlight -->
+                
                 <Switch id="switcher5" whichChoice="-1" >    
                 <MatrixTransform id="root5">
-
-
-                    
-                <shape>
-                        <appearance></appearance>
-                        <box size="80 80 80"></box>
-                         
-                      </shape>
-
-                      <Transform translation="130 0 0"> 
-                        <shape>
-                            <appearance></appearance>
-                            <sphere radius="60"></sphere>
-                        </shape>
-                     </Transform>
-
+                    <Transform rotation="0 1 0 3.14159265359">
+                            <transform id="planet" translation="0 0 0.2">
+                                <shape id="earth">
+                                    <appearance>
+                                        <material diffuseColor="0 0 0.5"></material>
+                                    </appearance>
+                                    <box size="60 60 60"></box>
+                                </shape>
+                            </transform>
+                    </Transform>
+                </MatrixTransform>
+                </Switch> 
                 
                 <Switch id="switcher1" whichChoice="-1" >
                 <MatrixTransform id="root1">
@@ -280,26 +254,6 @@
         
                     <ROUTE fromNode="TimeNeptune" fromField="fraction_changed" toNode="ObrotNeptune" toField="set_fraction"></ROUTE>
                     <ROUTE fromNode="ObrotNeptune" fromField="value_changed" toNode="Neptun" toField="rotation"></ROUTE>
-
-                </MatrixTransform>
-                </Switch> 
-<!-- viepoint ale narazie nie wiem jak toprzedstawić -->
-                
-                <Switch id="switcher1" whichChoice="-1" >
-                <MatrixTransform id="root1">
-                  
-                   <shape>
-                        <appearance></appearance>
-                        <box size="80 80 80"></box>
-                         
-                      </shape>
-
-                      <Transform translation="130 0 0"> 
-                        <shape>
-                            <appearance></appearance>
-                            <sphere radius="60"></sphere>
-                        </shape>
-                     </Transform>
                 </MatrixTransform>
             </Switch>
             </Scene>
