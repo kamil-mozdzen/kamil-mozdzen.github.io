@@ -32,12 +32,12 @@
 <!-- shape-poprawione -->
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
-                     <shape>
+<!--                      <shape>
   
                          <appearance></appearance>
                          <box size="80 80 80"></box>
                          
-                    </shape>
+                    </shape> -->
                     
                 </MatrixTransform>
                 </Switch> 
@@ -75,7 +75,7 @@
                     
                 </MatrixTransform>
                 </Switch> 
-<!-- Directional light -->
+<!-- przyklad 3 kule -->
 
 
             
@@ -130,13 +130,156 @@
                     
                 </MatrixTransform>
                 </Switch> 
-<!--  -->
+<!--  pusty marker w teroii ten przy poinlight -->
                 <Switch id="switcher5" whichChoice="-1" >    
                 <MatrixTransform id="root5">
 
 
                     
-               
+                <shape>
+                        <appearance></appearance>
+                        <box size="80 80 80"></box>
+                         
+                      </shape>
+
+                      <Transform translation="130 0 0"> 
+                        <shape>
+                            <appearance></appearance>
+                            <sphere radius="60"></sphere>
+                        </shape>
+                     </Transform>
+
+                
+                <Switch id="switcher1" whichChoice="-1" >
+                <MatrixTransform id="root1">
+                  
+                    <Transform DEF="Slonce" translation="0 0 0">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/c/cb/Solarsystemscope_texture_2k_sun.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="25"></Sphere>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform DEF="Merkury" center="0 0 -40" translation="0 0 40">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Solarsystemscope_texture_2k_mercury.jpg/1024px-Solarsystemscope_texture_2k_mercury.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="2"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Wenus" center="0 0 -100" translation="0 0 100">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/4/40/Solarsystemscope_texture_2k_venus_surface.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="8"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Ziemia" center="0 0 -140" translation="0 0 140">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Solarsystemscope_texture_2k_earth_daymap.jpg/1024px-Solarsystemscope_texture_2k_earth_daymap.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="6"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Mars" center="0 0 -200" translation="0 0 180">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Solarsystemscope_texture_2k_mars.jpg/1024px-Solarsystemscope_texture_2k_mars.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="4"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Jowisz" center="0 0 -200" translation="0 0 220">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Solarsystemscope_texture_2k_jupiter.jpg/1200px-Solarsystemscope_texture_2k_jupiter.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="12"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Saturn" center="0 0 -200" translation="0 0 260">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/e/ea/Solarsystemscope_texture_2k_saturn.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="10"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Uran" center="0 0 -200" translation="0 0 300">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5rhjZ27RTbfdD4d6psFXYlLNNFMy7smh7qA&usqp=CAU"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="4"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <Transform DEF="Neptun" center="0 0 -200" translation="0 0 360">
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/1/1e/Solarsystemscope_texture_2k_neptune.jpg"></ImageTexture>
+                            </Appearance>
+                            <Sphere radius="4"></Sphere>
+                        </Shape>
+                    </Transform>
+        
+                    <TimeSensor DEF="TimeSlonce" loop="true" cycleInterval="10"></TimeSensor>
+                    <TimeSensor DEF="TimeMerkury" loop="true" cycleInterval="2"></TimeSensor>
+                    <TimeSensor DEF="TimeWenus" loop="true" cycleInterval="10"></TimeSensor>
+                    <TimeSensor DEF="TimeZiemia" loop="true" cycleInterval="20"></TimeSensor>
+                    <TimeSensor DEF="TimeMars" loop="true" cycleInterval="17"></TimeSensor>
+                    <TimeSensor DEF="TimeJowisz" loop="true" cycleInterval="100"></TimeSensor>
+                    <TimeSensor DEF="TimeSaturn" loop="true" cycleInterval="50"></TimeSensor>
+                    <TimeSensor DEF="TimeUran" loop="true" cycleInterval="20"></TimeSensor>
+                    <TimeSensor DEF="TimeNeptune" loop="true" cycleInterval="40"></TimeSensor>
+        
+                    <OrientationInterpolator DEF="ObrotSlonce" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotMerkury" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotWenus" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotZiemia" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotMars" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotJowisz" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotSaturn" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotUran" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+                    <OrientationInterpolator DEF="ObrotNeptune" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></OrientationInterpolator>
+        
+                    <ROUTE fromNode="TimeSlonce" fromField="fraction_changed" toNode="ObrotSlonce" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotSlonce" fromField="value_changed" toNode="Slonce" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeMerkury" fromField="fraction_changed" toNode="ObrotMerkury" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotMerkury" fromField="value_changed" toNode="Merkury" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeWenus" fromField="fraction_changed" toNode="ObrotWenus" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotWenus" fromField="value_changed" toNode="Wenus" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeZiemia" fromField="fraction_changed" toNode="ObrotZiemia" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotZiemia" fromField="value_changed" toNode="Ziemia" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeMars" fromField="fraction_changed" toNode="ObrotMars" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotMars" fromField="value_changed" toNode="Mars" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeJowisz" fromField="fraction_changed" toNode="ObrotJowisz" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotJowisz" fromField="value_changed" toNode="Jowisz" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeSaturn" fromField="fraction_changed" toNode="ObrotSaturn" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotSaturn" fromField="value_changed" toNode="Saturn" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeUran" fromField="fraction_changed" toNode="ObrotUran" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotUran" fromField="value_changed" toNode="Uran" toField="rotation"></ROUTE>
+        
+                    <ROUTE fromNode="TimeNeptune" fromField="fraction_changed" toNode="ObrotNeptune" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="ObrotNeptune" fromField="value_changed" toNode="Neptun" toField="rotation"></ROUTE>
 
                 </MatrixTransform>
                 </Switch> 
