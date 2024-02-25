@@ -85,61 +85,85 @@
 
                 <Switch id="switcher6" whichChoice="-1" >
                 <MatrixTransform id="root6">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="1 1 1"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
+                    
+                      <transform>
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
+                            </appearance>
+                            <box size='60 60 60'></box>
+                        </shape>
+                    </transform>
+
+                    <Transform translation='130 0 0'>
+                        <Shape>
+                            <Appearance>
+                                <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Hyams_Beach%2C_Jervis_Bay%2C_Australia.jpg/1920px-Hyams_Beach%2C_Jervis_Bay%2C_Australia.jpg"></ImageTexture>
+                            </Appearance>
+                            <box size='60 60 60'></box>
+                        </Shape>
                     </Transform>
+
                 </MatrixTransform>
                 </Switch> 
 
                 <Switch id="switcher2" whichChoice="-1" >
                 <MatrixTransform id="root2">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="1 1 0"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
+                  <shape>
+                        <appearance></appearance>
+                        <box size="80 80 80"></box>
+                         
+                      </shape>
+
+                      <Transform translation="130 0 0"> 
+                        <shape>
+                            <appearance></appearance>
+                            <sphere radius="60"></sphere>
+                        </shape>
                     </Transform>
                 </MatrixTransform>
                 </Switch> 
 
                 <Switch id="switcher3" whichChoice="-1" >
                 <MatrixTransform id="root3">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="1 0 0"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
+                    <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
+                    <transform>
+                       
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
+                            </appearance>
+                            <box size='100 100 100'></box>
+                        </shape>
+                    </transform>
                 </MatrixTransform>
                 </Switch> 
 
                 <Switch id="switcher4" whichChoice="-1" >
                 <MatrixTransform id="root4">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="0.5 0.5 0.5"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
+                    <transform DEF='Szescian'>
+                <shape>
+                    <appearance>
+                        <material emissiveColor='1 0.9 0.2' transparency='0.1' specularColor='0 1 0'></material>
+                    </appearance>
+                    <box size='30 30 30'></box> <!-- Updated size -->
+                </shape>
+            </transform>
+            <transform DEF='Kula'>
+                <shape>
+                    <appearance>
+                        <material emissiveColor='0 0.6 0.62' transparency='0.1' specularColor='0 1 0'></material>
+                    </appearance>
+                    <sphere radius='15'></sphere> <!-- Updated radius -->
+                </shape>
+            </transform>
+            <timeSensor DEF='Czas' loop='TRUE' cycleInterval='5'></timeSensor>
+            <positionInterpolator DEF='Inter' keyValue='75 0 0, 0 75 0, -75 0 0 , 0 -75 0, 75 0 0' key='0, 0.25, 0.5, 0.75, 1'></positionInterpolator> <!-- Updated positions -->
+            <orientationInterpolator DEF='Obrot' key='0, 0.25, 0.5, 0.75, 1' keyValue='0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28'></orientationInterpolator>
+            <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Inter' toField='set_fraction'></ROUTE>
+            <ROUTE fromNode='Inter' fromField='value_changed' toNode='Kula' toField='set_translation'></ROUTE>
+            <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Obrot' toField='set_fraction'></ROUTE>
+            <ROUTE fromNode='Obrot' fromField='value_changed' toNode='Szescian' toField='rotation'></ROUTE>
                 </MatrixTransform>
                 </Switch> 
                 
