@@ -44,7 +44,7 @@ var totalNumberModels = 7;
  
 // Check if it's a mobile device and set constraints accordingly
 if(checkMobileDevice()){
-    constraints = { video: { facingMode: "environment"  }, audio: false };
+    constraints = { video: { facingMode: "environment"  }};
 } else {
     constraints = { video: true, audio: false };
 }
