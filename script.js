@@ -73,7 +73,8 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 // Avoid using this in new browsers
                 video.src = window.URL.createObjectURL(stream);
               }
-            videoStream = stream;  
+            //videoStream = stream;  
+           video.play();
   }
   
   function handleError(error) {
