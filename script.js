@@ -176,88 +176,7 @@ function animate()
         nMarkerArray.push(nMarker); // Store nMarker in the array
         
         // Depending on the ID of the marker, get the corresponding 3D model.
-        switch(nMarker) {
-            case 0:
-                root = document.getElementById("root0"); //get the MatrixTransform node
-              break;
-            case 1:
-                root = document.getElementById("root1"); //get the MatrixTransform node
-              break;
-            case 2:
-                root = document.getElementById("root2"); //get the MatrixTransform node
-              break;
-            case 3:
-                root = document.getElementById("root3"); //get the MatrixTransform node
-            break;
-            case 4:
-                root = document.getElementById("root4"); //get the MatrixTransform node
-              break;
-            case 5:
-                root = document.getElementById("root5"); //get the MatrixTransform node
-            break;
-            case 6:
-                root = document.getElementById("root6"); //get the MatrixTransform node
-            break;
-            case 7:
-               root = document.getElementById("root7"); //get the MatrixTransform node
-               break;
-           case 8:
-               root = document.getElementById("root8"); //get the MatrixTransform node
-               break;
-           case 9:
-               root = document.getElementById("root9"); //get the MatrixTransform node
-               break;
-           case 10:
-               root = document.getElementById("root10"); //get the MatrixTransform node
-               break;
-           case 11:
-               root = document.getElementById("root11"); //get the MatrixTransform node
-               break;
-           case 12:
-               root = document.getElementById("root12"); //get the MatrixTransform node
-               break;
-           case 13:
-               root = document.getElementById("root13"); //get the MatrixTransform node
-               break;
-           case 14:
-               root = document.getElementById("root14"); //get the MatrixTransform node
-               break;
-           case 15:
-               root = document.getElementById("root15"); //get the MatrixTransform node
-               break;
-           case 16:
-               root = document.getElementById("root16"); //get the MatrixTransform node
-               break;
-           case 17:
-               root = document.getElementById("root17"); //get the MatrixTransform node
-               break;
-           case 18:
-               root = document.getElementById("root18"); //get the MatrixTransform node
-               break;
-           case 19:
-               root = document.getElementById("root19"); //get the MatrixTransform node
-               break;
-           case 20:
-               root = document.getElementById("root20"); //get the MatrixTransform node
-               break;
-           case 21:
-               root = document.getElementById("root21"); //get the MatrixTransform node
-               break;
-           case 22:
-               root = document.getElementById("root22"); //get the MatrixTransform node
-               break;
-           case 23:
-               root = document.getElementById("root23"); //get the MatrixTransform node
-               break;
-           case 24:
-               root = document.getElementById("root24"); //get the MatrixTransform node
-               break;
-           case 25:
-               root = document.getElementById("root25"); //get the MatrixTransform node
-               break;
-            default:
-              root = document.getElementById("root0");
-          }
+        var root = getMatrixTransformNode(nMarker);
 
         // Get the marker matrix into the result matrix.
         detector.getTransformMatrix(i, resultMat);
@@ -272,20 +191,31 @@ function animate()
         
     }
 
-        if(nMarkerArray.length > 0) {
-        //Iterate over the nMarkerArray
-        for(var i = 0; i < totalNumberModels; i++){
-          
-          if(nMarkerArray.includes(i)) {
-            var currentNMarker = nMarkerArray[i];
-            // Execute your code here
-            document.getElementById("switcher"+i+"").setAttribute("whichChoice", 0);
-            console.log('Number ' + i + ' found in array at position: ' + currentNMarker);
-        } else {
-            document.getElementById("switcher"+i+"").setAttribute("whichChoice", -1);
+        setSwitchersVisibilityForArray(nMarkerArray, totalNumberModels);
+}
+
+// Helper function to set visibility of switchers
+function setSwitchersVisibility(choice, count) {
+    for (var i = 0; i <= count; i++) {
+        document.getElementById("switcher" + i).setAttribute("whichChoice", choice);
+    }
+}
+
+// Helper function to get the MatrixTransform node
+function getMatrixTransformNode(nMarker) {
+    var rootId = "root" + nMarker;
+    return document.getElementById(rootId) || document.getElementById("root0");
+}
+
+// Helper function to set switchers visibility based on nMarker array
+function setSwitchersVisibilityForArray(nMarkerArray, totalNumberModels) {
+    for (var i = 0; i <= totalNumberModels; i++) {
+        var choice = nMarkerArray.includes(i) ? 0 : -1;
+        document.getElementById("switcher" + i).setAttribute("whichChoice", choice);
+        if (choice === 0) {
+            console.log('Number ' + i + ' found in array at position: ' + nMarkerArray.indexOf(i));
         }
-        }
-        }
+    }
 }
 
 // Function to adapt the marker matrix
