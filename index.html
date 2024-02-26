@@ -19,37 +19,6 @@
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
 
-                <Switch id="switcher" whichChoice="-1" >
-                    <MatrixTransform id="root">
-                    <<Group DEF="grupa">
-                        <Shape DEF="Kula">
-                            <Appearance>
-                                <Material DEF="trans">
-                                    <transparency>0.0</transparency>
-                                </Material>
-                            </Appearance>
-                            <Sphere radius="15"></Sphere>
-                        </Shape>
-                        <Transform translation="75 0 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="0 75 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="-75 0 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="0 -75 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <TimeSensor DEF="czas" loop="true" cycleInterval="4"></TimeSensor>
-                        <ScalarInterpolator DEF="kolor" key="0 0.5 1" keyValue="0 1 0"></ScalarInterpolator>
-                    </Group>
-                    <ROUTE fromNode="czas" fromField="fraction_changed" toNode="kolor" toField="set_fraction"></ROUTE>
-                    <ROUTE fromNode="kolor" fromField="value_changed" toNode="trans" toField="set_transparency"></ROUTE>
-               
-                </MatrixTransform>
-                </Switch> 
 
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
@@ -312,6 +281,102 @@
         
                     <ROUTE fromNode="TimeNeptune" fromField="fraction_changed" toNode="ObrotNeptune" toField="set_fraction"></ROUTE>
                     <ROUTE fromNode="ObrotNeptune" fromField="value_changed" toNode="Neptun" toField="rotation"></ROUTE>
+                </MatrixTransform>
+            </Switch>
+
+            <Switch id="switcher7" whichChoice="-1">
+                <MatrixTransform id="root7">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher8" whichChoice="-1">
+                <MatrixTransform id="root8">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher9" whichChoice="-1">
+                <MatrixTransform id="root9">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher10" whichChoice="-1">
+                <MatrixTransform id="root10">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher11" whichChoice="-1">
+                <MatrixTransform id="root11">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher12" whichChoice="-1">
+                <MatrixTransform id="root12">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher13" whichChoice="-1">
+                <MatrixTransform id="root13">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher14" whichChoice="-1">
+                <MatrixTransform id="root14">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher15" whichChoice="-1">
+                <MatrixTransform id="root15">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher16" whichChoice="-1">
+                <MatrixTransform id="root16">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher17" whichChoice="-1">
+                <MatrixTransform id="root17">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher18" whichChoice="-1">
+                <MatrixTransform id="root18">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher19" whichChoice="-1">
+                <MatrixTransform id="root19">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher20" whichChoice="-1">
+                <MatrixTransform id="root20">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher21" whichChoice="-1">
+                <MatrixTransform id="root21">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher22" whichChoice="-1">
+                <MatrixTransform id="root22">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher23" whichChoice="-1">
+                <MatrixTransform id="root23">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher24" whichChoice="-1">
+                <MatrixTransform id="root24">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher25" whichChoice="-1">
+                <MatrixTransform id="root25">
+                     
                 </MatrixTransform>
             </Switch>
             </Scene>
