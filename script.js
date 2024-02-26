@@ -44,7 +44,7 @@ var totalNumberModels = 7;
  
 // Check if it's a mobile device and set constraints accordingly
 if(checkMobileDevice()){
-    constraints = { video: { facingMode: "environment"  }};
+    constraints = { video: { facingMode: "environment"  }, audio: false };
 } else {
     constraints = { video: true, audio: false };
 }
@@ -52,12 +52,12 @@ if(checkMobileDevice()){
 // Check if getUserMedia is supported and handle the stream
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
      // Modern non-iOS Safari browsers
-    navigator.mediaDevices.getUserMedia({video: constraints, audio: false})
+    navigator.mediaDevices.getUserMedia(constraints)
       .then(handleStream)
       .catch(handleError);
   } else if (navigator.getUserMedia) {
     // iOS Safari
-    navigator.getUserMedia({video: constraints, audio: false}, handleStream, handleError);
+    navigator.getUserMedia(constraints, handleStream, handleError);
   } else {
     console.log("getUserMedia is not supported in your browser");
   }
