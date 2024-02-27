@@ -209,7 +209,7 @@ function getMatrixTransformNode(nMarker) {
     return document.getElementById(rootId) || document.getElementById("root0");
 }
 
-// Helper function to set switchers visibility based on nMarker array
+// Helper function to set switchers visibility on only on the AR codes detected on camera
 function setSwitchersVisibilityForArray(nMarkerArray, totalNumberModels) {
     for (var i = 0; i <= totalNumberModels; i++) {
         var choice = nMarkerArray.includes(i) ? 0 : -1;
