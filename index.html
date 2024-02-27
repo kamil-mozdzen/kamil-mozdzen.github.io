@@ -167,7 +167,148 @@
             </Switch>
             <Switch id="switcher9" whichChoice="-1">
                 <MatrixTransform id="root9">
-<!--                      labirynt naprawic -->
+<!--                        <!-- Viewpoints -->
+                    
+                    <Viewpoint set_bind="true" fieldOfView="0.8" jump="false" orientation="1 0 0 -1.57" position="0 20 0" description="top"></Viewpoint>
+                    
+                    <!-- Light -->
+                    <Transform>
+                        <SpotLight ambientIntensity="0" attenuation="1 0 0" beamWidth="1.570796" color="0 0 1" cutOffAngle="0.785398" direction="-1 0 0" intensity="1" location="-4 0.7 6" on="true" radius="50"></SpotLight>
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="1 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 150"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <!-- Przyciski -->
+                    <Transform rotation="0 1 0 1.57" translation="-71.25 7.5 0">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="71.25 7.5 0">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="150 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 71.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 -71.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <!-- Wspólne -->
+                    <Transform rotation="0 1 0 1.57" translation="-48.75 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="48.75 7.5 -11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="-26.25 7.5 -11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform rotation="0 1 0 1.57" translation="26.25 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="112.5 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 -48.75">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 -26.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 -7.5">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 11.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="7.5 7.5 26.25">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
+                    
+                    <Transform translation="-7.5 7.5 48.75">
+                        <Shape>
+                            <Appearance>
+                                <Material diffuseColor="0.5 0.5 0.5"></Material>
+                            </Appearance>
+                            <Box size="30 15 7.5"></Box>
+                        </Shape>
+                    </Transform>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher10" whichChoice="-1">
