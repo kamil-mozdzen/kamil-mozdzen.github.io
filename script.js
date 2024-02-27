@@ -194,12 +194,14 @@ function animate()
         setSwitchersVisibilityForArray(nMarkerArray, totalNumberModels);
 }
 
+/**
 // Helper function to set visibility of switchers
 function setSwitchersVisibility(choice, count) {
     for (var i = 0; i <= count; i++) {
         document.getElementById("switcher" + i).setAttribute("whichChoice", choice);
     }
 }
+*/
 
 // Helper function to get the MatrixTransform node
 function getMatrixTransformNode(nMarker) {
