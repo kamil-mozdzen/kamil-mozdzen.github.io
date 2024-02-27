@@ -19,43 +19,39 @@
             <Scene>
                 <Viewfrustum id="vf"></Viewfrustum>
 
-
+<!--shape  -->
                 <Switch id="switcher0" whichChoice="-1" >
                 <MatrixTransform id="root0">
-                    <<Group DEF="grupa">
-                        <Shape DEF="Kula">
-                            <Appearance>
-                                <Material DEF="trans">
-                                    <transparency>0.0</transparency>
-                                </Material>
-                            </Appearance>
-                            <Sphere radius="15"></Sphere>
-                        </Shape>
-                        <Transform translation="75 0 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="0 75 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="-75 0 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <Transform translation="0 -75 0">
-                            <Shape USE="Kula"></Shape>
-                        </Transform>
-                        <TimeSensor DEF="czas" loop="true" cycleInterval="4"></TimeSensor>
-                        <ScalarInterpolator DEF="kolor" key="0 0.5 1" keyValue="0 1 0"></ScalarInterpolator>
-                    </Group>
-                    <ROUTE fromNode="czas" fromField="fraction_changed" toNode="kolor" toField="set_fraction"></ROUTE>
-                    <ROUTE fromNode="kolor" fromField="value_changed" toNode="trans" toField="set_transparency"></ROUTE>
-               
+                     <shape>
+  
+                 <appearance></appearance>
+                 <box size="80 80 80"></box>
+                         
+                </shape>
+                </MatrixTransform>
+                </Switch> 
+                <Switch id="switcher1" whichChoice="-1" >
+                <MatrixTransform id="root1">
+              
+                     <shape>
+                        <appearance></appearance>
+                        <box size="80 80 80"></box>
+                         
+                      </shape>
+
+                      <Transform translation="130 0 0"> 
+                        <shape>
+                            <appearance></appearance>
+                            <sphere radius="60"></sphere>
+                        </shape>
+                    </Transform>
+
                 </MatrixTransform>
                 </Switch> 
 
-                <Switch id="switcher6" whichChoice="-1" >
-                <MatrixTransform id="root6">
-                    
-                      <transform>
+                <Switch id="switcher2" whichChoice="-1" >
+                <MatrixTransform id="root2">
+                   <transform>
                         <shape>
                             <appearance>
                                 <material diffuseColor='1 0.5 1' transparency='0' emissiveColor='0 0 1' shininess='1'></material>
@@ -72,29 +68,45 @@
                             <box size='60 60 60'></box>
                         </Shape>
                     </Transform>
-
-                </MatrixTransform>
-                </Switch> 
-
-                <Switch id="switcher2" whichChoice="-1" >
-                <MatrixTransform id="root2">
-                  <shape>
-                        <appearance></appearance>
-                        <box size="80 80 80"></box>
-                         
-                      </shape>
-
-                      <Transform translation="130 0 0"> 
-                        <shape>
-                            <appearance></appearance>
-                            <sphere radius="60"></sphere>
-                        </shape>
-                    </Transform>
                 </MatrixTransform>
                 </Switch> 
 
                 <Switch id="switcher3" whichChoice="-1" >
                 <MatrixTransform id="root3">
+                    
+<!--                    dodatkowe -->
+                <transform translation='-220 0 0'>
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='0 0 1' transparency='0.1'  shininess='1'></material>
+                            </appearance>
+                            <sphere radius='60'></sphere>
+                        </shape>
+                    </transform>
+
+                    <transform translation='0 0 0'>
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='0 0 1' transparency='0.6'  shininess='1'></material>
+                            </appearance>
+                            <sphere radius='60'></sphere>
+                        </shape>
+                    </transform>
+
+                    <transform translation='220 0 0'>
+                        <shape>
+                            <appearance>
+                                <material diffuseColor='0 0 1' transparency='0.9'  shininess='1'></material>
+                            </appearance>
+                            <sphere radius='60'></sphere>
+                        </shape>
+                    </transform>
+                </MatrixTransform>
+                </Switch> 
+<!--direct  -->
+                <Switch id="switcher4" whichChoice="-1" >
+                <MatrixTransform id="root4">
+
                     <DirectionalLight ambientIntensity='0' color='1,1,1' direction='0,0,-1' global='false' intensity='1'></DirectionalLight>
                     <transform>
                        
@@ -105,56 +117,132 @@
                             <box size='100 100 100'></box>
                         </shape>
                     </transform>
-                </MatrixTransform>
-                </Switch> 
 
-                <Switch id="switcher4" whichChoice="-1" >
-                <MatrixTransform id="root4">
-                    <transform DEF='Szescian'>
-                <shape>
-                    <appearance>
-                        <material emissiveColor='1 0.9 0.2' transparency='0.1' specularColor='0 1 0'></material>
-                    </appearance>
-                    <box size='30 30 30'></box> <!-- Updated size -->
-                </shape>
-            </transform>
-            <transform DEF='Kula'>
-                <shape>
-                    <appearance>
-                        <material emissiveColor='0 0.6 0.62' transparency='0.1' specularColor='0 1 0'></material>
-                    </appearance>
-                    <sphere radius='15'></sphere> <!-- Updated radius -->
-                </shape>
-            </transform>
-            <timeSensor DEF='Czas' loop='TRUE' cycleInterval='5'></timeSensor>
-            <positionInterpolator DEF='Inter' keyValue='75 0 0, 0 75 0, -75 0 0 , 0 -75 0, 75 0 0' key='0, 0.25, 0.5, 0.75, 1'></positionInterpolator> <!-- Updated positions -->
-            <orientationInterpolator DEF='Obrot' key='0, 0.25, 0.5, 0.75, 1' keyValue='0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28'></orientationInterpolator>
-            <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Inter' toField='set_fraction'></ROUTE>
-            <ROUTE fromNode='Inter' fromField='value_changed' toNode='Kula' toField='set_translation'></ROUTE>
-            <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Obrot' toField='set_fraction'></ROUTE>
-            <ROUTE fromNode='Obrot' fromField='value_changed' toNode='Szescian' toField='rotation'></ROUTE>
+                   
                 </MatrixTransform>
                 </Switch> 
                 
                 <Switch id="switcher5" whichChoice="-1" >    
                 <MatrixTransform id="root5">
-                    <Transform rotation="0 1 0 3.14159265359">
-                            <transform id="planet" translation="0 0 0.2">
-                                <shape id="earth">
-                                    <appearance>
-                                        <material diffuseColor="0 0 0.5"></material>
-                                    </appearance>
-                                    <box size="60 60 60"></box>
-                                </shape>
-                            </transform>
-                    </Transform>
+                    <pointlight ambientintensity="1" attenuation="1 1 0" color="1 1 0.1" intensity="1" location="0 0 0" on="TRUE" radius="100"></pointlight>
+                    <transform rotation="1 0 0 0.5" translation="0 0 -5">
+                        <shape>
+                        <appearance>
+                            <material emissivecolor="1 0 0.5" transparency="0"></material>
+                        </appearance>
+                                <box size="70 70 70"></box>
+                        </shape>
+                    </transform>
                 </MatrixTransform>
                 </Switch> 
                 
-                <Switch id="switcher1" whichChoice="-1" >
-                <MatrixTransform id="root1">
-                  
-                    <Transform DEF="Slonce" translation="0 0 0">
+<!--                 spot -->
+                    <Switch id="switcher6" whichChoice="-1" >
+                <MatrixTransform id="root6">
+                            <SpotLight ambientIntensity='0' attenuation='1 0 0' beamWidth='1.570796' color='1 0 0' cutOffAngle='0.785398' direction='-1 0 0' intensity='1' location='10 0 0' on='TRUE' radius='100'></SpotLight>
+            
+                    <transform rotation='1 0 0 0.5' translation='0 0 -5'>
+                        <shape>
+                            <appearance>
+                                <material emissiveColor='0 1 0' transparency='0' specularColor='0 0.25 0.5'></material>
+                            </appearance>
+                            <box size='80 80 80'></box>
+                        </shape>
+
+                        
+                    </transform>
+
+                </MatrixTransform>
+            </Switch>
+
+            <Switch id="switcher7" whichChoice="-1">
+                <MatrixTransform id="root7">
+<!--                      7 i 8 to viewpoint na coś -->
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher8" whichChoice="-1">
+                <MatrixTransform id="root8">
+                     
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher9" whichChoice="-1">
+                <MatrixTransform id="root9">
+<!--                      labirynt naprawic -->
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher10" whichChoice="-1">
+                <MatrixTransform id="root10">
+<!--           orientation            -->
+                    <transform DEF="Ziemia">
+                        <transform DEF="LocalZiemia">
+                          <shape>
+                            <appearance>
+                              <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Solarsystemscope_texture_2k_earth_daymap.jpg/1024px-Solarsystemscope_texture_2k_earth_daymap.jpg"></ImageTexture>
+                            </appearance>
+                            <sphere radius="40"></sphere>
+                          </shape>
+                        </transform>
+                      </transform>
+                
+                      <timeSensor DEF="CzasZiemia" loop="true" cycleInterval="10"></timeSensor>
+                
+                      <orientationInterpolator DEF="ObrotWokolZiemia" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28"></orientationInterpolator>
+                
+                      <ROUTE fromNode="CzasZiemia" fromField="fraction_changed" toNode="ObrotWokolZiemia" toField="set_fraction"></ROUTE>
+                      <ROUTE fromNode="ObrotWokolZiemia" fromField="value_changed" toNode="Ziemia" toField="rotation"></ROUTE>
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher11" whichChoice="-1">
+                <MatrixTransform id="root11">
+                     <transform DEF="Kula" translation="5 0 0">
+                        <shape>
+                          <appearance>
+                            <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/c/cb/Solarsystemscope_texture_2k_sun.jpg"></ImageTexture>
+                          </appearance>
+                          <sphere radius="30"></sphere>
+                        </shape>
+                      </transform>
+                
+                      <TimeSensor DEF="Czas" loop="true" cycleInterval="2"></TimeSensor>
+                
+                      <PositionInterpolator DEF="Inter" keyValue="-25 0 0, -250 0 0, -500 0 0, -750 0 0, -1000 0 0" key="0, 1, 2.5, 3.4, 5"></PositionInterpolator>
+                      <ROUTE fromNode="Czas" fromField="fraction_changed" toNode="Inter" toField="set_fraction"></ROUTE>
+                      <ROUTE fromNode="Inter" fromField="value_changed" toNode="Kula" toField="set_translation"></ROUTE>
+                </MatrixTransform>
+            </Switch>
+            <Switch id="switcher12" whichChoice="-1">
+                <MatrixTransform id="root12">
+<!--                     kula i szescian -->
+                    
+                      <transform DEF='Szescian'>
+                        <shape>
+                            <appearance>
+                                <material emissiveColor='1 0.9 0.2' transparency='0.1' specularColor='0 1 0'></material>
+                            </appearance>
+                            <box size='30 30 30'></box> <!-- Updated size -->
+                        </shape>
+                    </transform>
+                    <transform DEF='Kula'>
+                        <shape>
+                            <appearance>
+                                <material emissiveColor='0 0.6 0.62' transparency='0.1' specularColor='0 1 0'></material>
+                            </appearance>
+                            <sphere radius='15'></sphere> <!-- Updated radius -->
+                        </shape>
+                    </transform>
+                    <timeSensor DEF='Czas' loop='TRUE' cycleInterval='5'></timeSensor>
+                    <positionInterpolator DEF='Inter' keyValue='75 0 0, 0 75 0, -75 0 0 , 0 -75 0, 75 0 0' key='0, 0.25, 0.5, 0.75, 1'></positionInterpolator> <!-- Updated positions -->
+                    <orientationInterpolator DEF='Obrot' key='0, 0.25, 0.5, 0.75, 1' keyValue='0 1 0 0, 0 1 0 1.57, 0 1 0 3.14, 0 1 0 4.71, 0 1 0 6.28'></orientationInterpolator>
+                    <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Inter' toField='set_fraction'></ROUTE>
+                    <ROUTE fromNode='Inter' fromField='value_changed' toNode='Kula' toField='set_translation'></ROUTE>
+                    <ROUTE fromNode='Czas' fromField='fraction_changed' toNode='Obrot' toField='set_fraction'></ROUTE>
+                    <ROUTE fromNode='Obrot' fromField='value_changed' toNode='Szescian' toField='rotation'></ROUTE>
+                </MatrixTransform>
+                
+            </Switch>
+            <Switch id="switcher13" whichChoice="-1">
+                <MatrixTransform id="root13">
+                       <Transform DEF="Slonce" translation="0 0 0">
                         <Shape>
                             <Appearance>
                                 <ImageTexture url="https://upload.wikimedia.org/wikipedia/commons/c/cb/Solarsystemscope_texture_2k_sun.jpg"></ImageTexture>
@@ -283,60 +371,97 @@
                     <ROUTE fromNode="ObrotNeptune" fromField="value_changed" toNode="Neptun" toField="rotation"></ROUTE>
                 </MatrixTransform>
             </Switch>
-
-            <Switch id="switcher7" whichChoice="-1">
-                <MatrixTransform id="root7">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher8" whichChoice="-1">
-                <MatrixTransform id="root8">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher9" whichChoice="-1">
-                <MatrixTransform id="root9">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher10" whichChoice="-1">
-                <MatrixTransform id="root10">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher11" whichChoice="-1">
-                <MatrixTransform id="root11">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher12" whichChoice="-1">
-                <MatrixTransform id="root12">
-                     
-                </MatrixTransform>
-            </Switch>
-            <Switch id="switcher13" whichChoice="-1">
-                <MatrixTransform id="root13">
-                     
-                </MatrixTransform>
-            </Switch>
             <Switch id="switcher14" whichChoice="-1">
                 <MatrixTransform id="root14">
                      
+  <Transform DEF="Obiekt" scale="30 30 30">
+                        <Shape>
+                          <Appearance>
+                            <Material diffuseColor="0 0 1"/>
+                          </Appearance>
+                          <Box size="3 3 0.1"/>
+                        </Shape>
+                      </Transform>
+                    
+                    
+                     
+                    
+                      <TimeSensor DEF="Timer" loop="TRUE" cycleInterval="10" /></TimeSensor>
+                      
+                      <OrientationInterpolator DEF="Ruch" key="0, 0.25, 0.5, 0.75, 1" keyValue="0 1 0 0, 0 1 0 -0.785, 0 1 0 0, 0 1 0 0.785,  0 1 0 0"/></orientationInterpolator>
+                      
+                      <ROUTE fromNode="Timer" fromField="fraction_changed" toNode="Ruch" toField="set_fraction"/></ROUTE>
+                      <ROUTE fromNode="Ruch" fromField="value_changed" toNode="Obiekt" toField="rotation"/></ROUTE>
+
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher15" whichChoice="-1">
+<!--                 visibility -->
                 <MatrixTransform id="root15">
-                     
+                      <transform scale="60 60 60">
+                        <!-- Definicja Cylinder -->
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="0 1 1"></material> <!-- Kolor materiału -->
+                            </appearance>
+                            <cylinder></cylinder>
+                        </shape>
+                    </transform>
+        
+                    <!-- Definicja VisibilitySensor -->
+                    <visibilitysensor center="0 0 1000" size="60 60 60"></visibilitysensor>
+        
+
+                    <timeSensor></timeSensor>
+                    <timeSensor></timeSensor>
+        
+                    <!-- Definicja ColorInterpolator -->
+                    <colorinterpolator key="0 100" keyValue="1 0 0, 1 1 0"></colorinterpolator>
+                    <colorinterpolator key="0 100" keyValue="1 1 0, 1 0 0"></colorinterpolator>
+        
+                    <!-- Routowanie -->
+                    <ROUTE fromNode="visibilitysensor" fromField="enterTime" toNode="timeSensor" toField="set_startTime"></ROUTE>
+                    <ROUTE fromNode="timeSensor" fromField="fraction_changed" toNode="colorinterpolator" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="colorinterpolator" fromField="value_changed" toNode="material" toField="set_diffuseColor"></ROUTE>
+                    <ROUTE fromNode="visibilitysensor" fromField="exitTime" toNode="timeSensor" toField="set_startTime"></ROUTE>
+                    <ROUTE fromNode="timeSensor" fromField="fraction_changed" toNode="colorinterpolator" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="colorinterpolator" fromField="value_changed" toNode="material" toField="set_diffuseColor"></ROUTE>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher16" whichChoice="-1">
                 <MatrixTransform id="root16">
-                     
+                       <fog color='1 1 1' visibilityRange='2300' fogType='EXPONENTIAL'></fog>
+      
+      <transform scale='20 20 20'>
+        <shape>
+          <appearance>
+            <material diffuseColor='1 1 0'></material>
+          </appearance>
+          <box></box>
+        </shape>
+      </transform>
+      
+      <transform scale='20 20 20' translation='60 0 0'>
+        <shape>
+          <appearance>
+            <material diffuseColor='1 1 0'></material>
+          </appearance>
+          <box></box>
+        </shape>
+      </transform>
+      
+      <transform scale='20 20 20' translation='-60 0 0'>
+        <shape>
+          <appearance>
+            <material diffuseColor='1 1 0'></material>
+          </appearance>
+          <box></box>
+        </shape>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher17" whichChoice="-1">
                 <MatrixTransform id="root17">
-                     
+<!--                      tu skonczylem labki 5 -->
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher18" whichChoice="-1">
