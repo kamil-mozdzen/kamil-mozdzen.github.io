@@ -461,27 +461,126 @@
             </Switch>
             <Switch id="switcher17" whichChoice="-1">
                 <MatrixTransform id="root17">
-<!--                      tu skonczylem labki 5 -->
+
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher18" whichChoice="-1">
                 <MatrixTransform id="root18">
-                     
+                     <Transform scale="30 30 30">
+                        <Group DEF="mojagrupa">
+                          <Shape>
+                            <Appearance>
+                              <Material DEF="Kula" diffuseColor="1.0 0.0 0.0"/>
+                            </Appearance>
+                            <Sphere/>
+                          </Shape>
+                          <Shape>
+                            <Appearance>
+                              <Material diffuseColor="1 1.0 0"/>
+                            </Appearance>
+                            <Cylinder radius="0.3" height="5.0"/>
+                          </Shape>
+                        </Group>
+                      </Transform>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher19" whichChoice="-1">
                 <MatrixTransform id="root19">
                      
+  <ProtoDeclare name="MojPrototyp">
+                        <field name="kolorNogi" type="SFColor" accessType="inputOutput" value="1.0 0.0 0.0"/>
+                        <field name="kolorSiedzenie" type="SFColor" accessType="inputOutput" value="0.0 1.0 0.0"/>
+                    </ProtoDeclare>
+                    <Transform scale="30 30 30">
+                        <Shape>
+                            
+                          <Appearance>
+                            <Material diffuseColor="0.0 1.0 0.0"/>
+                          </Appearance>
+                          <Cylinder height="0.2" radius="2.0"/>
+                        </Shape>
+                        <Transform translation="-1 -1 -0.5">
+                          <Shape DEF="Noga">
+                            <Appearance>
+                              <Material diffuseColor="1.0 0.0 0.0"/>
+                            </Appearance>
+                            <Cylinder height="2" radius="0.2"/>
+                          </Shape>
+                        </Transform>
+                        <Transform translation="1 -1 -0.5">
+                          <Shape USE="Noga"/>
+                        </Transform>
+                        <Transform translation="-1 -1 0.5">
+                          <Shape USE="Noga"/>
+                        </Transform>
+                        <Transform translation="1 -1 0.5">
+                          <Shape USE="Noga"/>
+                        </Transform>
+                      </Transform>
+                    
+                    <MojPrototyp kolorNogi="1 1 0" kolorSiedzenie="0 1 0"/>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher20" whichChoice="-1">
                 <MatrixTransform id="root20">
-                     
+                     <Group DEF="grupa">
+                        <Shape DEF="Kula">
+                            <Appearance>
+                                <Material DEF="trans">
+                                    <transparency>0.0</transparency>
+                                </Material>
+                            </Appearance>
+                            <Sphere radius="15"></Sphere>
+                        </Shape>
+                        <Transform translation="75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="-75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 -75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <TimeSensor DEF="czas" loop="true" cycleInterval="4"></TimeSensor>
+                        <ScalarInterpolator DEF="kolor" key="0 0.5 1" keyValue="0 1 0"></ScalarInterpolator>
+                    </Group>
+                    <ROUTE fromNode="czas" fromField="fraction_changed" toNode="kolor" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="kolor" fromField="value_changed" toNode="trans" toField="set_transparency"></ROUTE>
+                </Scene>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher21" whichChoice="-1">
                 <MatrixTransform id="root21">
-                     
+                     <Group DEF="grupa">
+                        <Shape DEF="Kula">
+                            <Appearance>
+                                <Material DEF="trans">
+                                    <transparency>0.0</transparency>
+                                </Material>
+                            </Appearance>
+                            <Sphere radius="15"></Sphere>
+                        </Shape>
+                        <Transform translation="75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="-75 0 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <Transform translation="0 -75 0">
+                            <Shape USE="Kula"></Shape>
+                        </Transform>
+                        <TimeSensor DEF="czas" loop="true" cycleInterval="4"></TimeSensor>
+                        <ScalarInterpolator DEF="kolor" key="0 0.5 1" keyValue="0 1 0"></ScalarInterpolator>
+                    </Group>
+                    <ROUTE fromNode="czas" fromField="fraction_changed" toNode="kolor" toField="set_fraction"></ROUTE>
+                    <ROUTE fromNode="kolor" fromField="value_changed" toNode="trans" toField="set_transparency"></ROUTE>
+                </Scene>
                 </MatrixTransform>
             </Switch>
             <Switch id="switcher22" whichChoice="-1">
