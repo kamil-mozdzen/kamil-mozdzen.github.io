@@ -1,6 +1,7 @@
 // Set DEBUG to true for debugging
 DEBUG = false;
 
+
 // Variables for runtime object manipulation and root reference
 var runtime = null; //holds the object that we need to manipulate the scene during the runtime
 var root = null; //reference to our matrixTransform obj
